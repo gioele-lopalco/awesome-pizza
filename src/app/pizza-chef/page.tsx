@@ -14,7 +14,7 @@ const PizzaChefPage = () => {
 
   return (
     <div className='page-container'>
-      <h1>Lista ordini da gestire</h1>
+      <h1>Ordini da gestire</h1>
       <OrderList
         showCompleteButton={true}
         takeOrder={takeOrder}
