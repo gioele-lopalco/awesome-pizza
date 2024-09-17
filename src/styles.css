@@ -1,0 +1,121 @@
+
+/* Stili generali */
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f4;
+  margin: 0;
+  padding: 0;
+}
+
+/* Contenitore della pagina */
+.page-container {
+  display: flex;
+  flex-direction: column;
+  height: 95%;
+  padding: 2%;
+  box-sizing: border-box;
+}
+
+/* Form */
+.form-container {
+  flex-grow: 1; /* Consente al modulo di occupare spazio disponibile */
+  display: flex;
+  flex-direction: column; /* Imposta la direzione verticale per il modulo */
+  justify-content: flex-start; /* Allinea gli elementi all'inizio */
+  margin-bottom: 2%; /* Margine in percentuale */
+}
+
+.order-form {
+  background: #fff;
+  padding: 5%; /* Padding in percentuale */
+  border-radius: 0.5rem; /* Raggio del bordo in rem */
+  box-shadow: 0 0.2rem 0.5rem rgba(0, 0, 0, 0.1);
+}
+
+/* Etichette */
+.label-container {
+  margin-bottom: 2%; /* Margine in percentuale */
+}
+
+.label {
+  margin-bottom: 1%; /* Margine in percentuale */
+}
+
+/* Input */
+input[type="text"] {
+  width: 100%; /* Larghezza al 100% */
+  padding: 2%; /* Padding in percentuale */
+  margin-bottom: 2%; /* Margine in percentuale */
+  border: 1px solid #ccc;
+  border-radius: 0.25rem; /* Raggio del bordo in rem */
+}
+
+/* Pulsanti */
+.button {
+  background-color: #28a745;
+  color: white;
+  border: none;
+  padding: 2%; /* Padding in percentuale */
+  border-radius: 0.25rem; /* Raggio del bordo in rem */
+  cursor: pointer;
+}
+
+.button:hover {
+  background-color: #218838; /* Colore del pulsante al passaggio del mouse */
+}
+
+/* Lista degli ordini */
+.current-order-container {
+  background: #e7f0c1;
+  padding: 3%; /* Padding in percentuale */
+  border-radius: 0.5rem; /* Raggio del bordo in rem */
+  margin-top: 2%; /* Margine in percentuale */
+}
+
+/* Stili della lista */
+.order-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.navbar {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  height: 5vh;
+  margin: 0;
+  background-color: #ffffff;
+  padding: 0 2%;
+  box-shadow: 0 0.1rem 0.3rem rgba(0, 0, 0, 0.1);
+}
+
+.nav-link {
+  text-decoration: none;
+  color: #007bff;
+  margin-left: 2%; /* Margine sinistro per spazio tra i link */
+}
+
+.nav-link:hover {
+  text-decoration: underline;
+}
+
+.list-order-item {
+  display: flex; /* Usa Flexbox per allineare il contenuto */
+  justify-content: space-between; /* Spazio tra il testo e i pulsanti */
+  align-items: center; /* Allinea verticalmente al centro */
+  background: #fff;
+  padding: 3%;
+  margin: 2% 0;
+  border-radius: 0.5rem;
+  box-shadow: 0 0.1rem 0.3rem rgba(0, 0, 0, 0.1);
+}
+
+/* Testo della lista degli ordini */
+.list-order-text {
+  margin-bottom: 0;
+  flex-grow: 1;
+}
+
+.list-order-button {
+  margin-left: 2%; /* Margine a sinistra per distanziare i pulsanti */
+}
