@@ -1,8 +1,11 @@
-// src/context/OrderContext.tsx
 'use client'
 import React, { createContext, useState, useContext, ReactNode, useEffect } from 'react'
 import { IPizzaOrder } from '../interfaces/IPizzaOrder'
 import { IOrderContext } from '../interfaces/IOrderContext'
+import { fetchOrders as fetchOrdersApi } from '../api/fetchOrders'
+import { addOrder as addOrderApi } from '../api/addOrder'
+import { removeOrder as removeOrderApi } from '../api/removeOrder'
+
 
 const OrderContext = createContext<IOrderContext | undefined>(undefined)
 
@@ -23,16 +26,8 @@ export const OrderProvider = ({ children }: { children: ReactNode }) => {
     if (isFetched) return
 
     try {
-      const response = await fetch('https://jsonplaceholder.typicode.com/posts?userId=1');
-      const data = await response.json();
-      const formattedOrders = data.map((item: any) => ({
-        id: item.id,
-        pizza: `Pizza ${item.id}`,
-        extra: `Extra ${item.id}`,
-        contact: `Contact ${item.userId}`,
-        userId: 1,
-      }))
-      setOrders(formattedOrders)
+      const fetchedOrders = await fetchOrdersApi()
+      setOrders(fetchedOrders)
       setIsFetched(true)
     } catch (error) {
       console.error('Errore nel fetch degli ordini:', error)
@@ -41,49 +36,37 @@ export const OrderProvider = ({ children }: { children: ReactNode }) => {
 
   const addOrder = async (order: IPizzaOrder) => {
     try {
-      const response = await fetch('https://jsonplaceholder.typicode.com/posts', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          title: order.pizza,
-          body: order.extra,
-          userId: order.userId,
-        }),
-      })
-
-      const newOrder = await response.json();
-      const fullOrder = {
-        id: newOrder.id,
-        pizza: order.pizza,
-        extra: order.extra,
-        contact: order.contact,
-        userId: order.userId,
-      }
-
+      const fullOrder = await addOrderApi(order)
       setOrders((prevOrders) => [...prevOrders, fullOrder])
-      console.log('Ordini aggiornati:', [...orders, fullOrder])
     } catch (error) {
       console.error('Errore nell\'aggiungere un ordine:', error)
     }
   }
 
-  const removeOrder = (id: number) => {
-    setOrders((prevOrders) => prevOrders.filter((order) => order.id !== id))
+  const removeOrder = async (id: number) => {
+    try {
+      await removeOrderApi(id)
+      setOrders((prevOrders) => prevOrders.filter((order) => order.id !== id))
+    } catch (error) {
+      console.error('Errore nella rimozione dell\'ordine:', error)
+    }
   }
+
 
   const takeOrder = (order: IPizzaOrder) => {
     setCurrentOrder(order)
-    removeOrder(order.id!)
+    setOrders((prevOrders) => prevOrders.filter((prevOrder) => prevOrder.id !== order.id))
   }
 
   const completeOrder = () => {
+    if (currentOrder?.id != null){
+      removeOrder(currentOrder.id)
+    }
     setCurrentOrder(null)
   }
 
   useEffect(() => {
-    fetchOrders();
+    fetchOrders()
   }, [])
 
   return (
