@@ -1,4 +1,3 @@
-// src/app/pizza-chef/page.tsx
 'use client'
 
 import { useEffect } from 'react'
@@ -14,27 +13,27 @@ const PizzaChefPage = () => {
 
   return (
     <div className='page-container'>
-      <h1>Ordini da gestire</h1>
+      <h1>Orders to manage</h1>
       <OrderList
         showCompleteButton={true}
         takeOrder={takeOrder}
         disableTakeOrder={!!currentOrder}
       />
       {currentOrder && (
-        <div className="current-order-container">
-          <h2>Ordine in carico:</h2>
+        <div className='current-order-container'>
+          <h2>Order in progress:</h2>
           <div className='list-order-item'>
             <div className='list-order-text'>
-              Pizza: {currentOrder.pizza}, Extra: {currentOrder.extra}, Contatto: {currentOrder.contact}
+              Pizza: {currentOrder.pizza}, Extra: {currentOrder.extra}, Contact: {currentOrder.contact}
             </div>
             <div className='list-order-button'>
-              <button className='button' onClick={() => completeOrder()}>Completa ordine</button>
+              <button className='button' onClick={() => completeOrder()}>Complete order</button>
             </div>
           </div>
         </div>
       )}
     </div>
-  );
-};
+  )
+}
 
-export default PizzaChefPage;
+export default PizzaChefPage

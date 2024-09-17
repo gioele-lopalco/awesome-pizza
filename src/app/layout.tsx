@@ -1,16 +1,15 @@
-// src/app/layout.tsx
-import '../styles.css';
-import { OrderProvider } from '../context/OrderContext';
-import Navbar from '../components/Navbar';
+import '../styles.css'
+import { OrderProvider } from '../context/OrderContext'
+import Navbar from '../components/Navbar'
 
 export const metadata = {
-  title: 'Pizza App',
-  description: 'Ordina la tua pizza preferita online',
+  title: 'Awesome Pizza',
+  description: 'Order your favorite pizza online',
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en">
+    <html lang='en'>
       <body>
         <OrderProvider>
           <Navbar />
@@ -20,5 +19,5 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         </OrderProvider>
       </body>
     </html>
-  );
+  )
 }

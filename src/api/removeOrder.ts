@@ -7,13 +7,13 @@ export const removeOrder = async (id: number) => {
     })
 
     if (!response.ok) {
-      throw new Error('Errore nella rimozione dell\'ordine');
+      throw new Error('Error removing the order')
     }
 
-    console.log(`Ordine con ID ${id} rimosso con successo`);
+    console.log(`Order with ID ${id} removed successfully`)
     return true
   } catch (error) {
-    console.error(`Errore durante la rimozione dell'ordine con ID ${id}:`, error);
-    throw error;
+    console.error(`Error while removing the order with ID ${id}:`, error)
+    throw error
   }
-};
+}

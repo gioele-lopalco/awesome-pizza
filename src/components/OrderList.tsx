@@ -1,15 +1,14 @@
-// src/components/OrderList.tsx
-'use client';
+'use client'
 
-import { ReactElement } from 'react';
+import { ReactElement } from 'react'
 import { useOrders } from '../context/OrderContext'
 import { IOrderList } from '@/interfaces/IOrderList'
 
 const OrderList = ({ showCompleteButton = false, takeOrder, disableTakeOrder = false }: IOrderList): ReactElement => {
-  const { orders } = useOrders();
+  const { orders } = useOrders()
 
   return (
-    <div className="order-list">
+    <div className='order-list'>
       <h2>Lista ordini</h2>
       {orders.length > 0 ? (
         <div>
@@ -32,7 +31,7 @@ const OrderList = ({ showCompleteButton = false, takeOrder, disableTakeOrder = f
         <p>Nessun ordine in coda.</p>
       )}
     </div>
-  );
-};
+  )
+}
 
-export default OrderList;
+export default OrderList

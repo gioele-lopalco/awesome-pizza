@@ -1,7 +1,7 @@
-import { IPizzaOrder } from "./IPizzaOrder";
+import { IPizzaOrder } from './IPizzaOrder'
 
 export interface IOrderList {
-  showCompleteButton?: boolean;
+  showCompleteButton?: boolean
   takeOrder?: (order: IPizzaOrder) => void
-  disableTakeOrder?: boolean;
+  disableTakeOrder?: boolean
 }

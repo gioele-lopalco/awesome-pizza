@@ -26,7 +26,7 @@ export const addOrder = async (order: IPizzaOrder) => {
       userId: order.userId,
     }
   } catch (error) {
-    console.error('Errore nell\'aggiungere un ordine:', error)
+    console.error('Error adding an order:', error)
     throw error
   }
 }

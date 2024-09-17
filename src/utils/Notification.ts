@@ -1,11 +1,10 @@
 'use client'
+import { NotificationInstance } from 'antd/es/notification/interface'
 
-import { notification } from 'antd'
-
-export const openNotification = () => {
-    notification.success({
-      message: 'Ordine effettuato',
-      description: 'Il tuo ordine è stato registrato con successo!',
+export const openNotification = (api: NotificationInstance) => {
+  api.success({
+      message: 'Order placed',
+      description: 'Your order has been successfully placed!!',
       placement: 'topRight',
     })
 }

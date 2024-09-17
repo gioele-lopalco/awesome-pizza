@@ -1,4 +1,3 @@
-// src/app/customer/page.tsx
 'use client'
 
 import OrderForm from '../../components/OrderForm'
@@ -9,18 +8,18 @@ const CustomerPage = () => {
 
   return (
     <div className='page-container'>
-      <h1>Ordina la tua pizza</h1>
+      <h1>Order your pizza</h1>
       <OrderForm />
       {currentOrder && (
         <div className='current-order-container'>
           <h3>Ordine preso in carico:</h3>
           <p>Pizza: {currentOrder.pizza},</p>
           <p>Extra: {currentOrder.extra},</p>
-          <p>Contatto: {currentOrder.contact}</p>
+          <p>Contact: {currentOrder.contact}</p>
         </div>
       )}
     </div>
   )
 }
 
-export default CustomerPage;
+export default CustomerPage
