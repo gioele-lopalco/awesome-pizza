@@ -5,33 +5,39 @@ import { ReactElement, useState } from 'react';
 import { useOrders } from '../context/OrderContext';
 import { IPizzaOrder } from '@/interfaces/IPizzaOrder';
 import { InputLabel } from './InputLabel';
+import { openNotification } from '@/utils/Notification';
+import { notification } from 'antd';
+
 
 
 const OrderForm = (): ReactElement => {
   const [order, setOrder] = useState<IPizzaOrder>({ pizza: '', extra: '', contact: '', userId: 1 });
-  const [message, setMessage] = useState<string | null>()
   const { addOrder } = useOrders();
-
+  const [api, contextHolder] = notification.useNotification();
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
     const { name, value } = e.target;
     setOrder((prev) => ({ ...prev, [name]: value }));
   }
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>): void => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    setMessage('Ordine avvenuto con successo!') // add popup
-    addOrder(order)
-    setOrder({ pizza: '', extra: '', contact: '', userId: 1 })
-  }
+    try {
+      await addOrder(order)
+      openNotification();
+    } catch (error) {
+      console.error('Errore durante l\'ordine:', error);
+    }
+    setOrder({ pizza: '', extra: '', contact: '', userId: 1 });
+  };
 
   return (
     <div className='form-container'>
-      {message}
+      {contextHolder}
       <form onSubmit={handleSubmit} className='order-form'>
         <div className='label-container'>
-          <InputLabel textLabel='Tipo di Pizza' inputName='pizza' inputValue={order.pizza} handleChange={handleChange}/>
-          <InputLabel textLabel='Extra' inputName='extra' inputValue={order.extra} handleChange={handleChange} isExtra={true}/>
-          <InputLabel textLabel='Dettagli di contatto' inputName='contact' inputValue={order.contact} handleChange={handleChange}/>
+          <InputLabel textLabel='Tipo di Pizza' inputName='pizza' inputValue={order.pizza} handleChange={handleChange} />
+          <InputLabel textLabel='Extra' inputName='extra' inputValue={order.extra} handleChange={handleChange} isExtra={true} />
+          <InputLabel textLabel='Dettagli di contatto' inputName='contact' inputValue={order.contact} handleChange={handleChange} />
         </div>
         <button type="submit" className='button'>Ordina</button>
       </form>
