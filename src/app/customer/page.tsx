@@ -8,8 +8,6 @@ const CustomerPage = () => {
 
   return (
     <div className='page-container'>
-      <h1>Order your pizza</h1>
-      <OrderForm />
       {currentOrder && (
         <div className='current-order-container'>
           <h3>Ordine preso in carico:</h3>
@@ -18,6 +16,8 @@ const CustomerPage = () => {
           <p>Contact: {currentOrder.contact}</p>
         </div>
       )}
+      <h1>Order your pizza</h1>
+      <OrderForm />
     </div>
   )
 }

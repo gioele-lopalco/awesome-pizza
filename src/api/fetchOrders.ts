@@ -4,7 +4,6 @@ export const fetchOrders = async () => {
   try {
     const response = await fetch('https://jsonplaceholder.typicode.com/posts?userId=1')
     const data = await response.json()
-    console.log(data)
     return data.map((item: any) => ({
       id: item.id,
       pizza: `Pizza ${item.id}`,

@@ -60,15 +60,30 @@ input[type='text'] {
   height: max-content;
 }
 
+.button:disabled {
+  background-color: #6464647f;
+  color: white;
+  border: none;
+  padding: 2%;
+  border-radius: 0.25rem;
+  cursor: not-allowed; 
+  opacity: 0.6;
+}
+
 .button:hover {
   background-color: #218838;
 }
+
+.button:disabled:hover {
+  background-color: #6464647f;
+}
+
 
 .current-order-container {
   background: #e7f0c1;
   padding: 3%;
   border-radius: 0.5rem;
-  margin-top: 2%;
+  margin-bottom: 2%;
 }
 
 .order-list {

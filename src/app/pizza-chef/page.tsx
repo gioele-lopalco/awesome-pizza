@@ -14,11 +14,6 @@ const PizzaChefPage = () => {
   return (
     <div className='page-container'>
       <h1>Orders to manage</h1>
-      <OrderList
-        showCompleteButton={true}
-        takeOrder={takeOrder}
-        disableTakeOrder={!!currentOrder}
-      />
       {currentOrder && (
         <div className='current-order-container'>
           <h2>Order in progress:</h2>
@@ -32,6 +27,11 @@ const PizzaChefPage = () => {
           </div>
         </div>
       )}
+      <OrderList
+        showCompleteButton={true}
+        takeOrder={takeOrder}
+        disableTakeOrder={!!currentOrder}
+      />
     </div>
   )
 }
