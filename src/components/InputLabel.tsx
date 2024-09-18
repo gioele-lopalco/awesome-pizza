@@ -1,6 +1,6 @@
 import { ReactElement } from 'react'
 
-export const InputLabel = ({ textLabel, handleChange,inputValue, inputName, isExtra = false }: IInputLabel): ReactElement => {
+export const InputLabel = ({ textLabel, handleChange, inputValue, inputName, isExtra = false }: IInputLabel): ReactElement => {
   return (
     <div className='label'>
       <p>{textLabel}</p>

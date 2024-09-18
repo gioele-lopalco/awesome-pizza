@@ -11,7 +11,7 @@ export const fetchOrders = async () => {
       contact: `Contact ${item.userId}`,
       userId: 1,
     }
-  ))
+    ))
   } catch (error) {
     console.error('Error in fetching orders:', error)
     throw error

@@ -59,7 +59,7 @@ export const OrderProvider = ({ children }: { children: ReactNode }) => {
   }
 
   const completeOrder = () => {
-    if (currentOrder?.id != null){
+    if (currentOrder?.id != null) {
       removeOrder(currentOrder.id)
     }
     setCurrentOrder(null)

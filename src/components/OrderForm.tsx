@@ -10,7 +10,7 @@ import { notification } from 'antd'
 const OrderForm = (): ReactElement => {
   const [order, setOrder] = useState<IPizzaOrder>({ pizza: '', extra: '', contact: '', userId: 1 })
   const { addOrder } = useOrders()
-  const [api,contextHolder] = notification.useNotification()
+  const [api, contextHolder] = notification.useNotification()
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
     const { name, value } = e.target
     setOrder((prev) => ({ ...prev, [name]: value }))
